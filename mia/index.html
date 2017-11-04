@@ -1,0 +1,129 @@
+<!DOCTYPE HTML>
+<!--
+	Caminar by TEMPLATED
+	templated.co @templatedco
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
+<html>
+	<head>
+		<title>MADE IN ABYSS MAP</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" href="assets/css/abyss.css" />
+	</head>
+	<body>
+
+		<!-- Header -->
+			<header id="header">
+				<div class="logo"><a href="./"> <img src="./mia_logo.png"'></a></div>
+			</header>
+
+		<!-- Main -->
+			<section id="main">
+			
+				<div class="inner">
+
+					<section id="one" class="wrapper style1">
+					
+					</section>
+					
+					<section id="two" class="wrapper style1">
+					<div class="map">
+						<img class="img-map" src="./map.jpg" width="100%"/>
+						
+						<div class="stage level-0">
+							<span> TOWN OF ORTH</span>	
+							<img src='./images/zero-lvl-bg.PNG' />							
+						</div>
+						
+						<div class="stage level-1">
+							<span>1ST EDGE OF THE ABYSS</span> 
+							<img src='./images/first-lvl-bg.PNG' />	
+						</div>
+						
+						<div class="stage level-2"> 
+							<span>2ND FOREST OF TEMPTATION</span> 
+							<img src='./images/second-lvl-bg.PNG' />	
+						</div>
+						<div class="stage level-3"> 
+							<span>3ND GREATEST FAULT</span>
+							<img src='./images/third-lvl-bg.PNG' />
+						</div>
+						<div class="stage level-4"> 
+							<span>4TH THE CUP OF GIANTS</span>
+							<img src='./images/forth-lvl-bg.PNG' />
+						</div>
+						<div class="stage level-5"> 
+							<span>5TH SEA OF CORPSES</span>
+							<img src='./images/fifth-lvl-bg.PNG' />
+						</div>
+						<div class="stage level-6"> 
+							<span>6TH THE CAPITAL OF THE UNRETURNED</span>
+							<img src='./images/sixth-lvl-bg.PNG' />
+						</div>
+						<div class="stage level-7"> 
+							<span>7TH THE FINALE MAELSTORM</span>
+							<img src='./images/q.png' />
+						</div>
+						<div class="stage level-8"> 
+							<span>THE DEEPEST POINT</span>
+							 <img src='./images/q.png' />
+						</div>
+						
+						
+					</div>
+					</section>
+					
+					
+				</div>
+				
+			</section>
+
+ 
+			<footer id="footer">
+				<!--<div class="container">
+					<ul class="icons">
+					123
+						<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+						<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+						<li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+						<li><a href="#" class="icon fa-envelope-o"><span class="label">Email</span></a></li>
+					</ul>
+				</div>-->
+				
+				<div class="copyright">
+					<div> Map by HioP </div>
+					<div>&copy; Untitled. All rights reserved. Images <a href="https://unsplash.com">Unsplash</a> Design <a href="https://templated.co">TEMPLATED</a></div>
+				</div>
+			</footer>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.poptrox.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+			
+			<script>
+			var START_MARGIN = 5;
+			var ADDITIONAL_MARGIN = 5;
+			$(document).ready(function(){
+				var stages = $('.map .stage'),
+					margin_bottom = START_MARGIN;
+				
+				for( s in stages) { 
+					if( stages.hasOwnProperty(s) ) 
+					{
+						if( stages[s] === stages.length) break;
+						$(stages[s]).css('top', margin_bottom)
+						margin_bottom = parseInt($(stages[s]).css('top')) + parseInt($(stages[s]).css('height'))+ADDITIONAL_MARGIN;
+						
+						
+					}
+				}
+			})
+			</script>
+
+	</body>
+</html>
