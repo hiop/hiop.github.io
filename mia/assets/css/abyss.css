@@ -40,7 +40,7 @@
 		
 		position: relative;
 		overflow: hidden;
-		opacity: 0.7;
+		opacity: 0.9;
 	}
 	.stage:hover{
 		cursor: pointer;
@@ -57,11 +57,11 @@
 		width: 100%;
 		height: 100%;
 		z-index: 1;
-		opacity: 0.2;
+		opacity: 0.3;
 		z-index: 0;
 	}
 	.stage:hover img {
-		opacity: 0.95;
+		opacity: 0.99;
 		-webkit-transition: all 0.3s ease;
 		-moz-transition: all 0.3s ease;
 		-ms-transition: all 0.3s ease;
@@ -70,7 +70,7 @@
   }
 	
 	.stage:hover {
-		opacity: 0.95;
+		opacity: 0.99;
 		-webkit-transition: all 0.3s ease;
 		-moz-transition: all 0.3s ease;
 		-ms-transition: all 0.3s ease;
@@ -81,7 +81,7 @@
 	
 	
    .level-0{
-		height: 70px;
+		height: 100px;
    }
    
    .level-1{
@@ -109,7 +109,7 @@
 	   height: 295px;
    }
    .level-8{
-	   //height: 240px;
+	   height: 105px;
    }
    
    
