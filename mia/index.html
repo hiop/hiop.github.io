@@ -106,13 +106,15 @@
 			<script src="assets/js/main.js"></script>
 			
 			<script>
-			var START_MARGIN = 5;
-			var ADDITIONAL_MARGIN = 5;
+			var START_MARGIN = 0,
+				ADDITIONAL_MARGIN = 5,
+				stages;
+				
 			$(document).ready(function(){
-				var stages = $('.map .stage'),
+				stages = $('.map .stage'),
 					margin_bottom = START_MARGIN;
 				
-				for( s in stages) { 
+				for(var s in stages) { 
 					if( stages.hasOwnProperty(s) ) 
 					{
 						if( stages[s] === stages.length) break;
