@@ -3,43 +3,32 @@
 	templated.co @templatedco
 	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
 */
-
+	var START_MARGIN = 0,
+		ADDITIONAL_MARGIN = 5,
+		stages;
 (function($) {
-
-	skel.breakpoints({
-		xlarge: '(max-width: 1680px)',
-		large: '(max-width: 1280px)',
-		medium: '(max-width: 980px)',
-		small: '(max-width: 736px)',
-		xsmall: '(max-width: 480px)'
-	});
-
-	$(function() {
-
-		var	$window 	= $(window),
-			$body 		= $('body'),
-			$header 	= $('#header');
-
-		// Disable animations/transitions until the page has loaded.
-			$body.addClass('is-loading');
-
-			$window.on('load', function() {
-				window.setTimeout(function() {
-					$body.removeClass('is-loading');
-				}, 100);
-			});
-
-		// Prioritize "important" elements on medium.
-			skel.on('+medium -medium', function() {
-				$.prioritize(
-					'.important\\28 medium\\29',
-					skel.breakpoint('medium').active
-				);
-			});
-
-		// Gallery.
-			$('.gallery').poptrox();
-
-	});
-
+	stages = $('.map .stage'),
+		margin_bottom = START_MARGIN;
+	
+	for(var s in stages) { 
+		if( stages.hasOwnProperty(s) ) 
+		{
+			if( stages[s] === stages.length) break;
+			$(stages[s]).css('top', margin_bottom)
+			margin_bottom = parseInt($(stages[s]).css('top')) + parseInt($(stages[s]).css('height'))+ADDITIONAL_MARGIN;
+			
+			
+		}
+	}
+	
+	$('.map .stage').click(function(){
+		
+		$(".overlay").fadeIn(100);
+		$(".mia-info").fadeIn(300);
+	})
+	
+	$(".overlay").click(function(){
+		$(".overlay").fadeOut(300);
+		$(".mia-info").fadeOut(100);
+	})
 })(jQuery);

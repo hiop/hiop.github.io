@@ -79,6 +79,64 @@
 
 	}
 	
+	.overlay {
+		position: fixed; /* Sit on top of the page content */
+		display: none; /* Hidden by default */
+		width: 100%; /* Full width (cover the whole page) */
+		height: 100%; /* Full height (cover the whole page) */
+		top: 0; 
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background-color: rgba(0,0,0,0.4); /* Black background with opacity */
+		z-index: 3; /* Specify a stack order in case you're using a different order for other elements */
+		cursor: pointer; /* Add a pointer on hover */
+	}
+	
+	.mia-info{
+		position: fixed;
+		display: none;
+		top: 50%;
+		left: 50%;
+		margin-top: -300px;
+		margin-left: -450px;
+		width: 900px;
+		height: 600px;
+		z-index: 4;
+		text-align: justify;
+		background: rgba(0,0,0,0.8);
+		//padding: px;
+		
+		
+		/*
+		background: 
+			url(../../images/flower-corrner.png) left -106px top -83px no-repeat, 
+			url(../../images/flower-corrner.png) right -106px top -83px no-repeat, 
+			url(../../images/flower-corrner.png) left -106px bottom -83px no-repeat, 
+			url(../../images/flower-corrner.png) right -106px bottom -83px no-repeat;
+			//rgba(0,0,0,0.4);
+	   */
+	}
+	.mia-info .corner{
+		position: absolute;
+		width: 30%;
+	}
+	.inner-info{
+		font-size: 18px;
+		//position: absolute;
+		//background-image: url(../../images/map.jpg); 
+		//background-repeat: no-repeat;
+		//background-size: cover;
+		width: 100%;
+		height: 100%;
+		padding: 50px;
+		/*background: 
+			url(../../images/flower-corrner.png) left -106px top -183px no-repeat, 
+			url(../../images/flower-corrner.png) right -106px top -83px no-repeat, 
+			url(../../images/flower-corrner.png) left -106px bottom -83px no-repeat, 
+			url(../../images/flower-corrner.png) right -106px bottom -83px no-repeat,
+			rgba(0,0,0,0.8);*/
+	}
 	
    .level-0{
 		height: 100px;
