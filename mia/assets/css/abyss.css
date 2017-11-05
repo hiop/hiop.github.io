@@ -3,6 +3,18 @@
     src: url(../fonts/Kerouac.ttf); /* Путь к файлу со шрифтом */
    }
 
+   h2{
+	   font-size: 30px;
+	   color: white;
+	   padding: 0;
+	   margin:0;	   
+	   font-weight: bold;
+   }
+   hr{
+	   margin-top: 0.65em;
+	   margin-bottom: 0.65em;
+   }
+   
    .map{
 		position: relative;
 		display: block;
@@ -28,7 +40,7 @@
 	.stage{
 	   font-family: Kerouac;
 	   font-weight: 700;
-	   font-size: 50px;
+	   font-size: 45px;
 	   color: #000;
 	   text-align: center;
 
@@ -88,7 +100,7 @@
 		left: 0;
 		right: 0;
 		bottom: 0;
-		background-color: rgba(0,0,0,0.4); /* Black background with opacity */
+		background-color: rgba(0,0,0,0.55); /* Black background with opacity */
 		z-index: 3; /* Specify a stack order in case you're using a different order for other elements */
 		cursor: pointer; /* Add a pointer on hover */
 	}
@@ -101,10 +113,10 @@
 		margin-top: -300px;
 		margin-left: -450px;
 		width: 900px;
-		height: 600px;
+		height: 700px;
 		z-index: 4;
 		text-align: justify;
-		background: rgba(0,0,0,0.8);
+		background: rgba(0,0,0,0.85);
 		//padding: px;
 		
 		
@@ -117,13 +129,16 @@
 			//rgba(0,0,0,0.4);
 	   */
 	}
+	.mia-info p{
+		text-indent: 1.5em; 
+	}
 	.mia-info .corner{
 		position: absolute;
 		width: 30%;
 	}
 	.inner-info{
 		font-size: 18px;
-		//position: absolute;
+		position: relative;
 		//background-image: url(../../images/map.jpg); 
 		//background-repeat: no-repeat;
 		//background-size: cover;
@@ -137,6 +152,85 @@
 			url(../../images/flower-corrner.png) right -106px bottom -83px no-repeat,
 			rgba(0,0,0,0.8);*/
 	}
+	
+	.inner-info p{
+		min-height: 50%;
+	}
+	
+	.screenshots{
+		position: relative;
+		display: block;
+		width:100%;
+		background: rgba(0, 0, 0, .5);
+		min-height: 100px;
+		
+	}
+	.screenshots div{
+		float: left;
+		width: 22.5%;
+		//border: 1px #CCC solid;
+	}
+	.screenshots img{
+		width: 99%;
+
+	}
+	
+	.difficult{
+		position: absolute;
+		bottom: 15px;
+		right: 50px;
+		display: block;
+		width: 485px;
+		padding: 15px;
+		height: 100px;
+		border-radius: 5px;
+		background: rgba(0, 0, 0, .5);
+		
+	}
+	
+	
+	.difficult div{
+		//display: block;
+		float: left;
+		//width: 16%;
+		height: 70px;
+		padding: 10px;
+		border-radius: 5px;
+		background: rgba(50, 50, 50, .5);
+		margin-left:5px;
+	}
+	
+	.circleborder {
+		width: 50px;
+		height: 50px;
+		border-radius: 25px;
+		-webkit-border-radius: 25px;
+		-moz-border-radius: 25px;
+	}
+	
+	.difficult .yes{
+		background: rgba(100, 200, 100, .5);
+	}
+	
+	.difficult .no{
+		opacity: 0.4;
+		background: rgba(30, 30, 30, .6);
+	}
+
+		
+	.difficult .no img{
+		opacity: 0.5;
+	}
+
+	
+	
+	/*.circleborder {
+		background: rgba(200, 20, 20, .8); //url(URL) no-repeat;
+		box-shadow: 0 0 20px rgba(100, 10, 10, .8);
+		-webkit-box-shadow: 0 0 20px rgba(100, 10, 10, .8);
+		-moz-box-shadow: 0 0 20px rgba(100, 10, 10, .8);
+	}
+	*/
 	
    .level-0{
 		height: 100px;
@@ -169,8 +263,17 @@
    .level-8{
 	   height: 135px;
    }
-   
-   
+
+   .right_b,
+   .left_b{
+	    //position: absolute;
+		width: 5% !important;	
+		height:100px;
+		line-height: 100px;
+		text-align: center;
+				background: rgba(0, 0, 0, .7);
+
+   };
 
    
    
