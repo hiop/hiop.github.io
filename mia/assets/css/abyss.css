@@ -3,6 +3,14 @@
     src: url(../fonts/Kerouac.ttf); /* Путь к файлу со шрифтом */
    }
 
+   .after-head span{
+	   margin-right: 10px;
+	   padding: 3px;
+	   border-radius: 5px;
+	   background: rgba(97, 97, 97, 0.27);
+	   font-size: 15px;
+   }
+   
    h2{
 	   font-size: 30px;
 	   color: white;
@@ -13,6 +21,11 @@
    hr{
 	   margin-top: 0.65em;
 	   margin-bottom: 0.65em;
+   }
+   
+   b{
+	   font-weight: bold;
+	   color: #bbb;
    }
    
    .map{
@@ -80,7 +93,7 @@
 		-o-transition: all 0.3s ease;
 		transition: all 0.3s ease;
   }
-	
+
 	.stage:hover {
 		opacity: 0.975;
 		-webkit-transition: all 0.3s ease;
@@ -110,16 +123,13 @@
 		display: none;
 		top: 50%;
 		left: 50%;
-		margin-top: -300px;
-		margin-left: -450px;
-		width: 900px;
+		margin-top: -350px;
+		margin-left: -550px;
+		width: 1100px;
 		height: 700px;
 		z-index: 4;
 		text-align: justify;
-		background: rgba(0,0,0,0.85);
-		//padding: px;
-		
-		
+		background: rgba(0,0,0,0.88);
 		/*
 		background: 
 			url(../../images/flower-corrner.png) left -106px top -83px no-repeat, 
@@ -129,15 +139,17 @@
 			//rgba(0,0,0,0.4);
 	   */
 	}
-	.mia-info p{
-		text-indent: 1.5em; 
+	
+	.text-container p{
+		text-indent: 1.0em; 
 	}
+	
 	.mia-info .corner{
 		position: absolute;
 		width: 30%;
 	}
 	.inner-info{
-		font-size: 18px;
+		font-size: 17px;
 		position: relative;
 		//background-image: url(../../images/map.jpg); 
 		//background-repeat: no-repeat;
@@ -152,26 +164,25 @@
 			url(../../images/flower-corrner.png) right -106px bottom -83px no-repeat,
 			rgba(0,0,0,0.8);*/
 	}
-	
-	.inner-info p{
-		min-height: 50%;
-	}
-	
+
 	.screenshots{
 		position: relative;
 		display: block;
 		width:100%;
 		background: rgba(0, 0, 0, .5);
-		min-height: 100px;
+		min-height: 126px;
 		
 	}
 	.screenshots div{
+		position: relative;
 		float: left;
 		width: 22.5%;
 		//border: 1px #CCC solid;
 	}
 	.screenshots img{
-		width: 99%;
+		position: relative;
+		width: 99% !important;
+		height: auto !important;
 
 	}
 	
@@ -263,15 +274,24 @@
    .level-8{
 	   height: 135px;
    }
+   
+   	
+	.inner-info .text-container{
+		min-height: 45% !important;
+		max-height: 45% !important;
+	}
+	.inner-info .text-container:hover{
+		cursor: pointer;
+	}
 
    .right_b,
    .left_b{
 	    //position: absolute;
 		width: 5% !important;	
-		height:100px;
-		line-height: 100px;
+		height:126px;
+		line-height: 126px;
 		text-align: center;
-				background: rgba(0, 0, 0, .7);
+		background: rgba(0, 0, 0, .7);
 
    };
 
