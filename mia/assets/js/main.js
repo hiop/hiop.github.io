@@ -33,7 +33,12 @@ var START_MARGIN = 0,
 		description: "<p>The first layer is the most shallow section of the abyss, right below the town of Orth. A gondola was built between 50 and 580 meters to hasten the descent. "+
 		"The environment doesn't really change and wildlife consists of mostly harmless animals, though occasionally predators from the 2nd Layer might ascend in search of food. There "+
 		"aren't many treasures or relics either, but there is a considerable number of Praying Skeletons.</p>",
-		screenshots: null,
+		screenshots: [
+			"./images/screenshots/1st1.jpg",
+			"./images/screenshots/1st2.jpg",
+			"./images/screenshots/1st3.jpg",
+			"./images/screenshots/1st4.jpg"
+		],
 		whistles : [0,1,1,1,1,1]
 	},
 	//2 Forest of Temptation
@@ -44,7 +49,12 @@ var START_MARGIN = 0,
 		description:			
 			"<p>The Forest of Temptation is the first truly dangerous section of the abyss. The fauna and environment suddenly change, turning into a tropical rainforest with huge vegetation. It is filled with dangerous beasts and ascending becomes increasingly difficult, making it a place where only experienced explorers can delve into. If a red whistle delver somehow gets to the 2nd Layer, search parties are called off and it is treated as a suicide.</p>"+
 			"<p>On the deepest point from 2000 meters onwards, the habitat suddenly flips around and becomes the \"Inverted Forest\". Predators in the air become common and wind currents are very strong and unstable. It also gets colder and darker since it receives little light due to its inverted position. At the farthest from the center an Observation Camp was built to serve as a resting point for delvers. Currently the white whistle Ozen is using it as her base.</p>",
-		screenshots: null,
+		screenshots: [
+			"./images/screenshots/2nd1.jpg",
+			"./images/screenshots/2nd2.jpg",
+			"./images/screenshots/2nd3.jpg",
+			"./images/screenshots/2nd4.jpg"
+		],
 		whistles : [0,0,1,1,1,1]
 	},
 	//3 Great Fault
