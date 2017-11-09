@@ -4,7 +4,7 @@
 	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
 */
 var START_MARGIN = 0,
-	ADDITIONAL_MARGIN = 5,
+	ADDITIONAL_MARGIN = -5,
 	MAX_DESCRIPTION = 700,
 	NOECLIPS_TEXT = '',
 	stages,
@@ -63,7 +63,12 @@ var START_MARGIN = 0,
 		depth: 'Depth: 2600~7000 meters',
 		soa: 'Strains of Ascent: Vertigo combined with visual and auditory hallucinations',
 		description: "<p>The third layer consists only of a 4000 meters vertical cliff, making it a highly challenging area to cross. Countless methods have been attempted to cross it through the use of artifacts or differently crafted devices. Aerial predators are common, including Scarlet Maws.</p>",	
-		screenshots: null,
+		screenshots: [
+			"./images/screenshots/3rd1.jpg",
+			"./images/screenshots/3rd2.jpg",
+			"./images/screenshots/3rd3.jpg",
+			"./images/screenshots/3rd4.jpg"
+		],
 		whistles : [0,0,1,1,1,1]
 	},
 	//4 The Cup of Giants
@@ -74,7 +79,12 @@ var START_MARGIN = 0,
 		description: 
 			"<p>The 4th layer is the point where the curse of the abyss gets truly severe and could potentially kill a person if it's someone already wounded or weak. It is invaded by some absurdly overgrown vegetation, with 800-meter-tall plants shaped like cups. Plants have extremely fast growing rates on the 4th layer, making the layout of the place constantly changing. Because of this, it is impossible to make maps or a chart. The fully grown cups are filled with hot water in the top, but the ones that are not fully grown produce acid instead. The most dangerous beast is the Tamaugachi. While it is herbivorous it is highly defensive of what it considers its territory, and will attack anyone it sees nearby.</p>"+
 			"<p>In the middle region at the 9000 meters marks there is the famous Garden of the Flower of Resilience, an area filled with Eternal Fortunes, the trademark flower of the Abyss. The distinctive sight produced by the countless glowing flowers make of the garden one of the most beautiful landscapes of the Abyss.</p>",
-		screenshots: null,
+		screenshots: [
+			"./images/screenshots/4th1.jpg",
+			"./images/screenshots/4th2.jpg",
+			"./images/screenshots/4th3.jpg",
+			"./images/screenshots/4th4.jpg"
+		],
 		whistles : [0,0,0,1,1,1]
 	},
 	//5 Sea of Corpses
