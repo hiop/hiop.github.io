@@ -123,7 +123,7 @@
 		display: none;
 		top: 50%;
 		left: 50%;
-		margin-top: -350px;
+		margin-top: -285px;
 		margin-left: -550px;
 		width: 1100px;
 		height: 700px;
@@ -148,6 +148,17 @@
 		position: absolute;
 		width: 30%;
 	}
+	
+	.mia-info .reg{
+		position: absolute;
+		width: 34%;
+	}
+	
+	.mia-info .maru{
+		position: absolute;
+		width: 38%;
+	}
+	
 	.inner-info{
 		font-size: 17px;
 		position: relative;
