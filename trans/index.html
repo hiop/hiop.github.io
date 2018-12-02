@@ -1,0 +1,203 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>The HTML5 Herald</title>
+  <meta name="description" content="The HTML5 Herald">
+  <meta name="author" content="SitePoint">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.11/lodash.core.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.11/lodash.js"></script>
+  <script src="https://unpkg.com/translate@1"></script>
+  <style>
+	#content{
+		width:400px;
+		margin: 0 auto;
+		font-size:20px;
+	}
+	.lang-container{
+		overflow:hidden;
+		width:1000px;
+		margin: 0 auto;
+	}
+	.box div{
+		width:90px;
+		text-align:center;
+		padding:10px;
+		background: #FFCBCB;
+		color:black;
+		font-size:16;
+		font-weight:bold;
+		display:inline-block;
+		margin:1px;
+		cursor:pointer;
+		}
+	.box div:hover{
+		background: #F3C3C3;
+	}
+	.box div.active {
+		background: #9DFCC6;
+	}
+	#all-lang{
+		background: white;
+		border: 1px #000 solid;
+	}
+  </style>
+
+</head>
+
+<body>
+	<div class="lang-container">
+	  <div class="box lang">
+	  </div>
+	  <div class="box">
+	  <div id="all-lang" >Выделить все</div>
+	  </div>
+	</div>
+<div id="content" style="">
+	
+	
+	<div></div>
+	<div>
+	<div>Оригинал на русском</div>
+	<textarea id="source" cols="50" rows="20" >Съешь ещё этих мягких французских булок, да выпей же чаю</textarea>
+	</div>
+
+	<div>Адцкий результат</div>
+	<div>
+	<textarea id="yobaOut" cols="50" rows="20"></textarea>
+	</div>
+	<div><input type="button" id="yobaStart" value="Прогон"/></div>
+</div>
+</body>
+
+</html>
+  <script>
+	translate.engine = 'yandex';
+	translate.key = 'trnsl.1.1.20181202T170326Z.7c454e78cc86b92d.02befdb65a96407346fe1af6b7a3b2f223d12c7a';
+	//bad langs
+	//1. "Mari":"mhr"
+	//2. "Papiamento":"pap"
+	//3. "Cebuano":"ceb"
+	//4. "Hill Mari":"mrj"
+	//5.  "Udmurt":"udm"
+	translate.langList = JSON.parse('{"Azerbaijan":"az", "Malayalam":"ml", "Albanian":"sq", "Maltese":"mt", "Amharic":"am", "Macedonian":"mk", "English":"en", "Maori":"mi", "Arabic":"ar", "Marathi":"mr", "Armenian":"hy", "Afrikaans":"af", "Mongolian":"mn", "Basque":"eu", "German":"de", "Bashkir":"ba", "Nepali":"ne", "Belarusian":"be", "Norwegian":"no", "Bengali":"bn", "Punjabi":"pa", "Burmese":"my", "Bulgarian":"bg", "Persian":"fa", "Bosnian":"bs", "Polish":"pl", "Welsh":"cy", "Portuguese":"pt", "Hungarian":"hu", "Romanian":"ro", "Vietnamese":"vi", "Russian":"ru", "Haitian":"ht", "Galician":"gl", "Serbian":"sr", "Dutch":"nl", "Sinhala":"si", "Slovakian":"sk", "Greek":"el", "Slovenian":"sl", "Georgian":"ka", "Swahili":"sw", "Gujarati":"gu", "Sundanese":"su", "Danish":"da", "Tajik":"tg", "Hebrew":"he", "Thai":"th", "Yiddish":"yi", "Tagalog":"tl", "Indonesian":"id", "Tamil":"ta", "Irish":"ga", "Tatar":"tt", "Italian":"it", "Telugu":"te", "Icelandic":"is", "Turkish":"tr", "Spanish":"es", "Kazakh":"kk", "Uzbek":"uz", "Kannada":"kn", "Ukrainian":"uk", "Catalan":"ca", "Urdu":"ur", "Kyrgyz":"ky", "Finnish":"fi", "Chinese":"zh", "French":"fr", "Korean":"ko", "Hindi":"hi", "Xhosa":"xh", "Croatian":"hr", "Khmer":"km", "Czech":"cs", "Laotian":"lo", "Swedish":"sv", "Latin":"la", "Scottish":"gd", "Latvian":"lv", "Estonian":"et", "Lithuanian":"lt", "Esperanto":"eo", "Luxembourgish":"lb", "Javanese":"jv", "Malagasy":"mg", "Japanese":"ja", "Malay":"ms"}')
+	translate.template = '<div data-lang="<%=value%>"><%=key%></div>'
+	_.forEach(translate.langList,function(value,key){
+		if(value != 'ru')$('.lang-container .box.lang').append(_.template(translate.template)({key:key,value:value}));
+	})
+	
+	$('.box.lang div').on('click',function(){
+		if($(this).hasClass('active')){
+			$(this).removeClass('active');
+		}else{
+			$(this).addClass('active');
+		}
+		
+	});
+	
+		$('#all-lang').on('click',function(){
+			if($('.box.lang div.active').length){
+				$('.box.lang div.active').removeClass('active')
+			}else{
+				$('.box.lang div').addClass('active');
+			}
+		});
+	
+	
+	function getListActiveLang(){
+		var listOfLangs = [];
+		_.forEach($('.box div.active'),function(element){
+			listOfLangs.push($(element).data('lang'));
+		});
+		return listOfLangs;
+	}
+	/*translate('to', { from: 'en', to: 'ru'}).then(function(data){
+		console.log(data)
+	})*/
+	var langList;
+	
+	$('#yobaStart').on('click',function(){
+		try{
+			langList = getListActiveLang();
+			if(langList.length){
+				$('#yobaOut').val('');
+				$('#yobaOut').val('ОБРАБОТКА....');
+			
+			
+				yobaTranslate($('#source').val(), 'ru', langList[0], new $.Deferred()).done(function(data){
+					console.log(data);
+					$('#yobaOut').val(data)
+				})
+			}else{
+				throw new Error('Пустой список языков')
+			}
+		}
+		catch(e){
+						console.log(e)
+						$('#yobaOut').val(e);
+		}
+	});
+	
+	function yobaTranslate(_src, _from, _to, _deferred = null){
+	
+		var $yobaDeferred = _deferred || new $.Deferred(),
+			$yobaSentenceDeferred = new $.Deferred(),
+			sourceVal = _src;//$('#source').val();
+			sourceValSplit = sourceVal.split(' '),
+			transPromis = null,
+			yobaOutString = '',
+			yobaList = [];
+			
+			
+		console.log('Перевод стартанул...');
+			
+			//Ломаем предложение и переводим каждое слово в отдельности
+			_.forEach(sourceValSplit,function(word){
+					if(word.length){
+						transPromis = translate(word, { from: _from, to: _to});
+						yobaList.push(transPromis);
+					}
+			});
+			
+			//После перевода всех слов, собираем предложение в единое
+			Promise.all(yobaList).then(function(words) {
+				_.forEach(words,function(word){
+							yobaOutString += ' '+word
+				});
+				
+				yobaOutString = yobaOutString.trim();
+				$yobaSentenceDeferred.resolve(yobaOutString)
+			});
+			
+			$yobaSentenceDeferred.done(function(sentence){
+			
+				translate(sentence, { from: _to, to:_from}).then(function(data){
+					if(_deferred == null){
+						$yobaDeferred.resolve(data)
+					}else{
+						var langListNextIndex = langList.indexOf(_to)+1;
+						$('#yobaOut').val(((langListNextIndex/langList.length)*100)+'%');
+						
+						if(langListNextIndex < langList.length){
+							yobaTranslate(data, _from, langList[langListNextIndex], _deferred);
+						}else{
+							$yobaDeferred.resolve(data);
+						}
+					}
+				})
+			
+			})
+			
+			
+		return $yobaDeferred;
+	}
+	
+	
+	
+
+
+  </script>
