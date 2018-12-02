@@ -45,6 +45,11 @@
 		background: white;
 		border: 1px #000 solid;
 	}
+	
+	#lang-count{
+		background: white;
+		width:110px;
+	}
   </style>
 
 </head>
@@ -55,6 +60,7 @@
 	  </div>
 	  <div class="box">
 	  <div id="all-lang" >Выделить все</div>
+	   <div id="lang-count" >Языков 0/0</div>
 	  </div>
 	</div>
 <div id="content" style="">
@@ -89,14 +95,14 @@
 	_.forEach(translate.langList,function(value,key){
 		if(value != 'ru')$('.lang-container .box.lang').append(_.template(translate.template)({key:key,value:value}));
 	})
-	
+	countOfLangs();
 	$('.box.lang div').on('click',function(){
 		if($(this).hasClass('active')){
 			$(this).removeClass('active');
 		}else{
 			$(this).addClass('active');
 		}
-		
+			countOfLangs();
 	});
 	
 		$('#all-lang').on('click',function(){
@@ -105,8 +111,14 @@
 			}else{
 				$('.box.lang div').addClass('active');
 			}
+			countOfLangs();
 		});
 	
+	function countOfLangs(){
+		var allLang		= $('.box.lang div').length;
+			activeLang	= $('.box.lang div.active').length;
+			$('#lang-count').html('Языков '+activeLang+'/'+allLang);
+	}
 	
 	function getListActiveLang(){
 		var listOfLangs = [];
