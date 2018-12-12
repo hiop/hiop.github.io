@@ -135,6 +135,8 @@
 	$('#yobaStart').on('click',function(){
 		try{
 			langList = getListActiveLang();
+			shuffleArray(langList);
+			console.log('after shuffle ',langList)
 			if(langList.length){
 				$('#yobaOut').val('');
 				$('#yobaOut').val('ОБРАБОТКА....');
@@ -159,10 +161,12 @@
 		var $yobaDeferred = _deferred || new $.Deferred(),
 			$yobaSentenceDeferred = new $.Deferred(),
 			sourceVal = _src;//$('#source').val();
-			sourceValSplit = sourceVal.split(' '),
+			sourceValSplit = [sourceVal];//sourceVal.split(' '),
 			transPromis = null,
 			yobaOutString = '',
 			yobaList = [];
+			
+			
 			
 			
 		console.log('Перевод стартанул...');
@@ -207,6 +211,19 @@
 			
 		return $yobaDeferred;
 	}
+	
+	/**
+ * Randomize array element order in-place.
+ * Using Durstenfeld shuffle algorithm.
+ */
+function shuffleArray(array) {
+    for (var i = array.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
+    }
+}
 	
 	
 	
