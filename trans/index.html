@@ -77,6 +77,8 @@
 	<textarea id="yobaOut" cols="50" rows="20"></textarea>
 	</div>
 	<div><input type="button" id="yobaStart" style="height:50px;width:363px;" value="Прогон"/></div>
+	<div><input type="button" id="yobaDiscordCopy" style="height:50px;width:363px;" value="DISCORD COPY"/></div>
+	<div id="yobaHiddenDiscordText" style="display:none;"></div>
 </div>
 </body>
 
@@ -212,6 +214,21 @@
 		return $yobaDeferred;
 	}
 	
+	$('#yobaDiscordCopy').on('click',function(){
+		
+		var discordYobaText = 'ORIGINAL'+
+		'```'+
+		$('#source').val()+
+		'```'+
+		'TRANSLATE'+
+		'```'+
+		$('#yobaOut').val()+
+		'```';
+		$('#yobaHiddenDiscordText').text(discordYobaText);
+		console.log(discordYobaText);
+		copyToClipboard('#yobaHiddenDiscordText');
+	});
+	
 	/**
  * Randomize array element order in-place.
  * Using Durstenfeld shuffle algorithm.
@@ -223,6 +240,15 @@ function shuffleArray(array) {
         array[i] = array[j];
         array[j] = temp;
     }
+}
+
+	
+function copyToClipboard(element) {
+  var $temp = $("<input>");
+  $("body").append($temp);
+  $temp.val($(element).text()).select();
+  document.execCommand("copy");
+  $temp.remove();
 }
 	
 	
