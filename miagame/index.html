@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Hello, world!</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+	<link  rel="stylesheet" href="./assets/css/style.css">
+	</head>
+  <body>
+    
+	
+	<div id="content" class="container">
+	<div id="#logo"><img src="./assets/img/mia_logo.png" class="mx-auto d-block"></div>
+		<div id="game" class="mx-auto d-block">
+				<!-- CHAR-SELECT -->
+				<div id="char-select" class="row">
+				 <div class="col">
+				 
+					<div data-char="riko" class="card mx-auto" style="width: 18rem;">
+					  <img class="card-img-top" src="./assets/img/riko.png">
+					  <div class="card-body">
+						<p class="card-text">
+						Riko
+						</p>
+					  </div>
+					</div>
+					
+				 </div>
+				 <div class="col">	
+				 
+					<div data-char="reg" class="card mx-auto" style="width: 18rem;">
+					  <img class="card-img-top" src="./assets/img/reg.png">
+					  <div class="card-body">
+						<p class="card-text">Reg</p>
+					  </div>
+					</div>
+					
+				</div>
+				<div class="col">	
+				
+					<div data-char="nanachi" class="card mx-auto" style="width: 18rem;">
+					  <img class="card-img-top" src="./assets/img/nanachi.png">
+					  <div class="card-body">
+						<p class="card-text">Nanachi</p>
+					  </div>
+					</div>
+			   </div>
+			</div>
+			<!-- /CHAR-SELECT -->
+			
+			<!-- MAIN-GAME-BOARD -->
+			<div id="char-view" class="row">
+			   <div class="col-4">
+				   <div class="row">
+						<div id="char-view-avatar" class="card mx-auto" style="width: 18rem;">
+						  <img class="card-img-top" src="">
+						  <div class="card-body">
+							<div id="char-stat-view" class="card-text row">
+								<div id="hp" class="col-4">
+									<span class="stat">HP</span>
+									<span class="value">100%</span>
+								</div>
+								<div id="sta" class="col-4">
+									<span class="stat">STA</span>
+									<span class="value">~</span>
+								</div>
+								<div id="lvl" class="col-4">
+									<span class="stat">LVL</span>
+									<span class="value">01</span>
+								</div>
+							</div>
+						  </div>
+						</div>
+				   </div>
+			   
+		   </div>
+		   <div id="char-view-body" class="card col-8">
+			<div class="row">
+				<div class="col-9">
+				
+				</div>
+				<div id="stats" class="col-3">
+				    <div>Stats</div>
+					
+<ul class="list-group">
+  <li class="list-group-item d-flex justify-content-between align-items-center list-group-item-danger">
+    STR 
+    <span class="badge badge-primary badge-pill"> 10</span>
+  </li>
+  <li class="list-group-item d-flex justify-content-between align-items-center list-group-item-success">
+    DEX 
+    <span class="badge badge-primary badge-pill"> 25</span>
+  </li>
+  <li class="list-group-item d-flex justify-content-between align-items-center list-group-item-primary">
+    INT 
+    <span class="badge badge-primary badge-pill"> 20</span>
+  </li>
+</ul>
+					
+				</div>
+			</div>
+		   </div>
+		   <!-- /MAIN-GAME-BOARD -->
+		</div>
+	</div>
+    
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	
+    <script
+  src="https://code.jquery.com/jquery-3.2.1.js"
+  integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+  crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/jsface/2.4.9/jsface.min.js"></script>
+    <script src="./assets/js/game.js"></script>
+  </body>
+</html>

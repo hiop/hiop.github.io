@@ -85,7 +85,7 @@
 </html>
   <script>
 	translate.engine = 'yandex';
-	translate.key = 'trnsl.1.1.20181202T170326Z.7c454e78cc86b92d.02befdb65a96407346fe1af6b7a3b2f223d12c7a';
+	translate.key = 'trnsl.1.1.20181221T194314Z.e86aef73e1420ffe.7b7a97a6c8d39995607e5382c5eca2c6fc501a75';
 	//bad langs
 	//1. "Mari":"mhr"
 	//2. "Papiamento":"pap"
@@ -192,21 +192,27 @@
 			});
 			
 			$yobaSentenceDeferred.done(function(sentence){
-			
-				translate(sentence, { from: _to, to:_from}).then(function(data){
+				var data = sentence;
+				//translate(sentence, { from: _to, to:_from}).then(function(data){
 					if(_deferred == null){
 						$yobaDeferred.resolve(data)
 					}else{
 						var langListNextIndex = langList.indexOf(_to)+1;
 						$('#yobaOut').val(((langListNextIndex/langList.length)*100)+'%');
 						
-						if(langListNextIndex < langList.length){
-							yobaTranslate(data, _from, langList[langListNextIndex], _deferred);
-						}else{
-							$yobaDeferred.resolve(data);
+						if(_to == 'ru'){
+						  $yobaDeferred.resolve(data);
+						}
+						else if(langListNextIndex < langList.length){
+							//yobaTranslate(data, _from, langList[langListNextIndex], _deferred);
+							yobaTranslate(data, _to, langList[langListNextIndex], _deferred);
+						}
+						else{
+						  langListNextIndex++;
+						  yobaTranslate(data, _to, 'ru', _deferred);
 						}
 					}
-				})
+				//})
 			
 			})
 			
