@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>SPT Vagabond Map</title>
+    <!-- Leaflet -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #1a1a2e;
+        }
+        
+        #map {
+            height: 100vh;
+            width: 100%;
+            background: #0f0f1a;
+        }
+        
+        @media (max-width: 600px) {
+            .info-panel { font-size: 11px; padding: 8px 12px; top: 10px; right: 10px; }
+            .legend { font-size: 10px; }
+        }
+    </style>
+</head>
+<body>
+
+<div id="map"></div>
+
+<script>
+    // Image
+    const imageUrl = 'https://i.ibb.co/xqLSmLdz/tarkov-map-1.jpg'
+
+    // Size
+    const imageWidth = 1024;
+    const imageHeight = 1024;
+
+    // Border
+    const southWest = [0, imageHeight];
+    const northEast = [imageWidth, 0];
+    const bounds = L.latLngBounds(southWest, northEast);
+    
+    // Map init
+    const map = L.map('map', {
+        crs: L.CRS.Simple,
+        maxBounds: bounds,
+        maxBoundsViscosity: 1.0,
+        zoomSnap: 0.25,
+        zoomDelta: 0.5
+    });
+    
+    // View
+    map.setView([imageHeight / 2, imageWidth / 2], 1);
+    
+    // Add image
+    L.imageOverlay(imageUrl, bounds, {
+        opacity: 1,
+        interactive: true,
+        attribution: '&copy; Игровая карта'
+    }).addTo(map);
+    
+    // Set bounds
+    map.setMaxBounds(bounds);
+    map.fitBounds(bounds);
+
+    // Debug (x,y) on click
+    function pixelToLatLng(x, y) {
+        return map.unproject([x, y], 0);
+    }
+
+    let tempMarker = null;
+    map.on('click', function(e) {
+        const coords = map.project(e.latlng, 0);
+        const x = Math.round(coords.x);
+        const y = Math.round(coords.y);
+        
+        L.popup()
+            .setLatLng(e.latlng)
+            .setContent(`Click coords (x,y):<br><b>${x}, ${y}</b>`)
+            .openOn(map);
+            
+        if (tempMarker) map.removeLayer(tempMarker);
+        tempMarker = L.circle(e.latlng, {
+            radius: 5,
+            color: 'red',
+            weight: 2,
+            fillOpacity: 0.5,
+            interactive: false
+        }).addTo(map);
+        
+        setTimeout(() => {
+            if (tempMarker) map.removeLayer(tempMarker);
+            tempMarker = null;
+        }, 2000);
+    });
+
+    // Marker with popup
+    function addMarkerPopup(x, y, popupText, color='#ff0000') {
+        // Маркер 1: Главный город
+        return  L.marker(pixelToLatLng(x, y), {
+            icon: L.divIcon({
+                html: '<div style="border: 3px solid #000; background:'+color+'; width:18px;height: 18px;"></div>',
+                iconSize: [18, 18],
+                popupAnchor: [0, -9]
+            })
+        }).bindPopup(`<b>${popupText}</b>`).addTo(map)
+    }
+
+    // Add line
+    function addLine(markerFrom, markerTo) {
+        // Пунктирная линия
+        const dashedLine = L.polyline([markerFrom.getLatLng(), markerTo.getLatLng()], {
+            color: '#000000',           // Цвет линии
+            weight: 3,                  // Толщина
+            opacity: 0.95,              // Прозрачность
+            dashArray: '10, 10'        // Пунктир: длина штриха, длина пробела
+        }).addTo(map);
+    }
+
+    // Add rect
+    function addRectWithText(x1, y1, x2, y2, text, color, textColor = '#ffffff') {
+        const rectangle = L.rectangle(
+            [pixelToLatLng(x1, y1), pixelToLatLng(x2, y2)],
+            {
+                color: color,
+                weight: 2,
+                fillColor: color,
+                fillOpacity: 0.25,
+                opacity: 0.8
+            }
+        ).addTo(map);
+
+        // Center of rect
+        const centerX = (x1 + x2) / 2;
+        const centerY = (y1 + y2) / 2;
+        const centerPoint = pixelToLatLng(centerX, centerY);
+
+        // Add text to center
+        L.marker(centerPoint, {
+            icon: L.divIcon({
+                html: `<div style="background: rgba(0,0,0,0.50); color: ${textColor}; padding: 6px 12px; border-radius: 6px; font-size: 13px; font-weight: bold; white-space: nowrap; border-left: 3px solid ${color}; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">${text}</div>`,
+                iconSize: [null, null],
+                className: 'zone-label'
+            })
+        }).addTo(map);
+
+        return rectangle;
+    }
+
+    // Map const
+    const interchangeColor = '#ddad04';
+    const streetsColor = '#ff0025';
+
+    // Map rects
+    addRectWithText(660, -1021, 747, -943, 'Ground Zero', '#c101be');
+    addRectWithText(606, -856, 738, -741, "Streets of Tarkov", streetsColor);
+    addRectWithText(386, -559, 457, -515, 'Factory', '#0d6026');
+    addRectWithText(366, -507, 521, -446, 'Customs', '#0029ff');
+    addRectWithText(263, -385, 397, -286, 'Reserve', '#08ecc0');
+    addRectWithText(197, -210, 555, -53, 'Shoreline', '#ceec08');
+    addRectWithText(218, -753, 433, -594, 'Woods', '#ec9c08');
+    addRectWithText(68, -432, 182, -58, 'Lighthouse', '#8400ff');
+    addRectWithText(647, -616, 753, -494, 'Interchange', interchangeColor)
+
+    // Exits
+    const therapistExit = addMarkerPopup(731, -1009, "Therapist's Clinic", '#00FF00');
+    const fenceExit = addMarkerPopup(642, -807, "Fence's Hub", '#00FF00');
+    const praporExit = addMarkerPopup(671, -832, "Prapor's Warehouse", '#00FF00');
+
+    // Transit
+    const transitFromGroundZeroToSoT = addMarkerPopup(664, -972, "Transit to Streets of Tarkov");
+    const transitFromSoTToGroundZero = addMarkerPopup(733, -817, "Transit to Ground Zero", '#c101be');
+
+    const transitSotToInterchange = addMarkerPopup(663, -748, "Transit to Interchange", interchangeColor);
+    const transitInterchangeToSoT = addMarkerPopup(664, -612, "Transit to Streets of Tarkov", streetsColor);
+
+    // Transit line
+    addLine(transitFromGroundZeroToSoT, transitFromSoTToGroundZero);
+    addLine(transitSotToInterchange, transitInterchangeToSoT);
+</script>
+</body>
+</html>
